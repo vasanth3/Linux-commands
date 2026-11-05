@@ -3,8 +3,8 @@
 
 Linux user management is the process of creating, modifying, deleting, and managing user accounts and groups.
 
-These commands are commonly used by Linux system administrators to manage server access.
-Always login with root user to execute commands
+These commands are commonly used by Linux system administrators to manage server access,
+Always login as root user to execute commands.
 
 ## 1. User Management Commands
 
