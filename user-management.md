@@ -4,6 +4,7 @@
 Linux user management is the process of creating, modifying, deleting, and managing user accounts and groups.
 
 These commands are commonly used by Linux system administrators to manage server access.
+Always login with root user to execute commands
 
 ## 1. User Management Commands
 
@@ -31,23 +32,23 @@ The `useradd` command creates a new user account.
 Syntax:
 
 ```bash
-sudo useradd username
+useradd username
 ```
 
 Examples:
 
 ```bash
 # Create a user
-sudo useradd john
+useradd john
 
 # Create a user with a home directory
-sudo useradd -m john
+useradd -m john
 
 # Create a user with a specific shell
-sudo useradd -m -s /bin/bash john
+useradd -m -s /bin/bash john
 
 # Set the user's password
-sudo passwd john
+passwd john
 ```
 
 ### adduser
@@ -55,7 +56,7 @@ sudo passwd john
 On Ubuntu and Debian, `adduser` provides an interactive way to create users.
 
 ```bash
-sudo adduser john
+ adduser john
 ```
 
 This command creates the user, prompts for a password, and normally creates a home directory.
@@ -77,22 +78,22 @@ The `usermod` command modifies an existing user account.
 
 ```bash
 # Change username
-sudo usermod -l newname oldname
+ usermod -l newname oldname
 
 # Add user to sudo group on Ubuntu
-sudo usermod -aG sudo john
+ usermod -aG sudo john
 
 # Add user to a group
-sudo usermod -aG developers john
+usermod -aG developers john
 
 # Change login shell
-sudo usermod -s /bin/bash john
+usermod -s /bin/bash john
 
 # Lock user account
-sudo usermod -L john
+ usermod -L john
 
 # Unlock user account
-sudo usermod -U john
+usermod -U john
 ```
 
 **Important:** Always use `-aG` when adding a user to a supplementary group. Using `-G` without `-a` can replace the user's existing supplementary group memberships.
@@ -103,10 +104,10 @@ The `userdel` command deletes a user account.
 
 ```bash
 # Delete user account
-sudo userdel john
+ userdel john
 
 # Delete user and home directory
-sudo userdel -r john
+ userdel -r john
 ```
 
 The `-r` option removes the user's home directory and mail spool.
@@ -122,16 +123,16 @@ The `passwd` command manages user passwords.
 passwd
 
 # Change another user's password
-sudo passwd john
+passwd john
 
 # Lock a user password
-sudo passwd -l john
+ passwd -l john
 
 # Unlock a user password
-sudo passwd -u john
+passwd -u john
 
 # Check password expiration information
-sudo chage -l john
+ chage -l john
 ```
 
 ### chage - Password Expiration
@@ -140,13 +141,13 @@ The `chage` command manages password aging and expiration.
 
 ```bash
 # View password aging information
-sudo chage -l john
+chage -l john
 
 # Set password to expire after 90 days
-sudo chage -M 90 john
+chage -M 90 john
 
 # Require password change at next login
-sudo chage -d 0 john
+chage -d 0 john
 ```
 
 ## 6. Group Management
@@ -165,13 +166,13 @@ Linux groups allow administrators to manage access for multiple users.
 
 ```bash
 # Create a group
-sudo groupadd developers
+ groupadd developers
 
 # Create another group
-sudo groupadd admins
+groupadd admins
 
 # Add user to a group
-sudo usermod -aG developers john
+usermod -aG developers john
 
 # Display user's groups
 groups john
@@ -180,11 +181,11 @@ groups john
 getent group developers
 
 # Rename a group
-sudo groupmod -n devteam developers
+groupmod -n devteam developers
 
 # Delete a group
-sudo groupdel devteam
-```
+groupdel devteam
+``
 
 ## 7. Switch Between Users
 
@@ -205,7 +206,7 @@ su -
 
 ```bash
 # Run a command with elevated privileges
-sudo ls /root
+ls /root
 
 # Open a root shell
 sudo -i
@@ -247,16 +248,16 @@ Create a user and assign the user to a group.
 
 ```bash
 # Create a group
-sudo groupadd developers
+ groupadd developers
 
 # Create a user with a home directory
-sudo useradd -m -s /bin/bash john
+useradd -m -s /bin/bash john
 
 # Set password
-sudo passwd john
+ passwd john
 
 # Add user to developers group
-sudo usermod -aG developers john
+ usermod -aG developers john
 
 # Verify user details
 id john
